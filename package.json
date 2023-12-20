@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run lite",
+    "lite": "lite-server"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/ibabaityte/ExpenseTracker/issues"
   },
-  "homepage": "https://github.com/ibabaityte/ExpenseTracker#readme"
+  "homepage": "https://github.com/ibabaityte/ExpenseTracker#readme",
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "lite-server": "^2.6.1"
+  }
 }
