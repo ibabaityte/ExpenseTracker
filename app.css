@@ -17,7 +17,8 @@ body {
 }
 
 h2 {
-    color: rgb(245, 130, 167, 0.5);
+    /* color: rgb(245, 130, 167, 0.5); */
+    color: rgb(241, 0, 134);
     text-align: center;
     font-family: 'Hind Siliguri', sans-serif;
     letter-spacing: 7px;
@@ -28,9 +29,28 @@ h2 {
 #balance {
     width: 72vw;
     height: 10vh;
+    display: flex;
+    align-items: center;
     margin-bottom: 20px;
     background-color: rgba(42, 10, 43);
     border-radius: 20px;
+}
+
+#balance p {
+    flex: 1;
+    color: rgb(186, 168, 172);
+}
+
+#incomeText,
+#expensesText {
+    font-size: 25px;
+    color: rgb(186, 168, 172);
+}
+
+#balanceText {
+    font-size: 35px;
+    margin-left: 30px;
+    color: rgb(241, 0, 134)
 }
 
 #expenses {
@@ -41,12 +61,84 @@ h2 {
     flex-direction: row;
 }
 
-#expenseList {
+#history {
     width: 60%;
     height: 60vh;
     margin-right: 10px;
     background-color: rgba(42, 10, 43);
     border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#historyTitle,
+#addNewTitle {
+    font-size: 25px;
+    color: rgb(241, 0, 134)
+}
+
+#historyList {
+    width: 90%;
+    height: 80%;
+    overflow: auto;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.listItem {
+    color: rgb(186, 168, 172);
+    width: 95%;
+    font-weight: bold;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#indicator {
+    width: 2%;
+    height: 50px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.indicator-negative {
+    background-color: rgb(150, 24, 24);
+}
+
+.indicator-positive {
+    background-color: rgb(24, 150, 45);
+}
+
+#category {
+    width: 73%;
+    text-align: left;
+    margin-left: 30px;
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+#amount {
+    width: 25%;
+    text-align: right;
+    font-family: 'Hind Siliguri', sans-serif;
 }
 
 #addExpense {
@@ -55,4 +147,121 @@ h2 {
     margin-left: 10px;
     background-color: rgba(42, 10, 43);
     border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+form {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+form label {
+    color: rgb(186, 168, 172);
+    font-family: 'Hind Siliguri', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#newItemType {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+#newCategoryContainer,
+#newAmountContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+select {
+    width: 70%;
+    font-size: 1.15rem;
+    padding: 0.675em 1em;
+    background-color: rgba(184, 178, 185, 0.5);
+    border: 1px solid rgba(184, 178, 185, 0.5);
+    border-radius: 0.25rem;
+    color: #000;
+    cursor: pointer;
+}
+
+#newCategoryContainer::before,
+#newCategoryContainer::after {
+    --size: 0.3rem;
+    content: "";
+    position: absolute;
+    right: 1rem;
+    pointer-events: none;
+}
+
+#newCategoryContainer::before {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-bottom: var(--size) solid black;
+    top: 40%;
+}
+
+#newCategoryContainer::after {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-top: var(--size) solid black;
+    top: 55%;
+}
+
+#amountInput {
+    width: 40%;
+    font-size: 1.15rem;
+    padding: 0.675em 1em;
+    background-color: rgba(184, 178, 185, 0.5);
+    border: 1px solid rgba(184, 178, 185, 0.5);
+    border-radius: 0.25rem;
+    color: #000;
+}
+
+#submitButton {
+    width: 50%;
+    height: 40px;
+    margin: 50px auto;
+    background-color: rgb(241, 0, 134);
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 20px;
+}
+
+/* Styles for screens with a width less than 900 pixels */
+@media screen and (max-width: 901px) {
+
+    h2 {
+        font-size: 30px;
+    }
+
+    #incomeText,
+    #expensesText {
+        display: none;
+    }
+
+    #balanceText {
+        font-size: 25px;
+        text-align: center;
+        margin-left: 0px;
+    }
+
+    .listItem {
+        font-size: 15px;
+    }
+
+    form label {
+        font-size: 15px;
+    }
+
+    #submitButton {
+        border-radius: 0.25rem;
+        font-size: 15px;
+    }
 }

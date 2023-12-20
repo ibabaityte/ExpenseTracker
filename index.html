@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,17 +11,91 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div id="main">
         <h2>Expense tracker</h2>
 
-        <div id="balance"></div>
+        <div id="balance">
+            <p id="balanceText">Balance: <b><span id="balanceSign"></span><span id="balanceAmount">0</span></b></p>
+            <p id="incomeText">Total income: <b><span id="incomeSign"></span><span id="incomeCount">0</span></b></p>
+            <p id="expensesText">Total expenses: <b><span id="expensesSign"></span><span id="expensesCount">0</span></b>
+            </p>
+        </div>
 
         <div id="expenses">
-            <div id="expenseList"></div>
+            <div id="history">
+                <p id="historyTitle">History:</p>
+                <div id="historyList">
+                    <div class="listItem">
+                        <div id="indicator" class=""></div>
+                        <p id="category"></p>
+                        <p id="amount"><span id="amountSign"></span></p>
+                    </div>
+                </div>
+            </div>
 
-            <div id="addExpense"></div>
+            <div id="addExpense">
+                <p id="addNewTitle">Add new</p>
+
+                <form>
+                    <div id="newItemType">
+                        <div>
+                            <input type="radio" id="expense" value="expense" name="item">
+                            <label for="expense">Expense</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="income" value="income" name="item">
+                            <label for="income">Income</label>
+                        </div>
+                    </div>
+
+                    <div id="newCategoryContainer">
+                        <label for="type">Choose a cateogry:</label>
+                        <select name="type" id="newCategory">
+                            <option value="food">Food</option>
+                            <option value="groceries">Groceries</option>
+                            <option value="restaurants">Restaurants</option>
+                            <option value="diningOut">Dining Out</option>
+                            <option value="transportation">Transportation</option>
+                            <option value="gas">Gas</option>
+                            <option value="publicTransit">Public Transit</option>
+                            <option value="carMaintenance">Car Maintenance</option>
+                            <option value="utilities">Utilities</option>
+                            <option value="rentMortgage">Rent/Mortgage</option>
+                            <option value="insurance">Insurance</option>
+                            <option value="healthCare">Health Care</option>
+                            <option value="medicalExpenses">Medical Expenses</option>
+                            <option value="fitness">Fitness</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="travel">Travel</option>
+                            <option value="gifts">Gifts</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="homeImprovement">Home Improvement</option>
+                            <option value="clothing">Clothing</option>
+                            <option value="personalCare">Personal Care</option>
+                            <option value="education">Education</option>
+                            <option value="subscriptions">Subscriptions</option>
+                            <option value="charitableDonations">Charitable Donations</option>
+                            <option value="petExpenses">Pet Expenses</option>
+                            <option value="hobbies">Hobbies</option>
+                            <option value="officeSupplies">Office Supplies</option>
+                            <option value="taxes">Taxes</option>
+                            <option value="debtRepayment">Debt Repayment</option>
+                            <option value="miscellaneous">Miscellaneous</option>
+                        </select>
+                    </div>
+
+                    <div id="newAmountContainer">
+                        <label for="type">Enter the amount:</label>
+                        <input type="number" id="amountInput">
+                    </div>
+
+                    <button type="submit" id="submitButton">Add</button>
+                </form>
+            </div>
         </div>
     </div>
 </body>
+
 </html>
