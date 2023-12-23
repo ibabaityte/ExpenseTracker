@@ -113,7 +113,7 @@ h2 {
     align-items: center;
 }
 
-#indicator {
+.indicator {
     width: 2%;
     height: 50px;
     border-top-left-radius: 5px;
@@ -128,14 +128,14 @@ h2 {
     background-color: rgb(24, 150, 45);
 }
 
-#category {
+.category {
     width: 73%;
     text-align: left;
     margin-left: 30px;
     font-family: 'Hind Siliguri', sans-serif;
 }
 
-#amount {
+.amount {
     width: 25%;
     text-align: right;
     font-family: 'Hind Siliguri', sans-serif;

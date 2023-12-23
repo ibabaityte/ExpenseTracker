@@ -9,3 +9,10 @@ export interface inputsInterface {
     categoryInput: HTMLInputElement,
     amountInput: HTMLInputElement
 }
+
+export interface placeholdersInterface {
+    listItem: HTMLDivElement,
+    typeIndicatorElement: HTMLDivElement,
+    categoryElement: HTMLParagraphElement,
+    amountElement: HTMLParagraphElement
+}

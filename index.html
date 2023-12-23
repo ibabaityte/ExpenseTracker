@@ -17,22 +17,16 @@
         <h2>Expense tracker</h2>
 
         <div id="balance">
-            <p id="balanceText">Balance: <b><span id="balanceSign"></span><span id="balanceAmount">0</span></b></p>
-            <p id="incomeText">Total income: <b><span id="incomeSign"></span><span id="incomeCount">0</span></b></p>
-            <p id="expensesText">Total expenses: <b><span id="expensesSign"></span><span id="expensesCount">0</span></b>
+            <p id="balanceText">Balance: <b><span id="balanceAmount">0</span></b></p>
+            <p id="incomeText">Total income: <b><span id="incomeCount">0</span></b></p>
+            <p id="expensesText">Total expenses: <b><span id="expensesCount">0</span></b>
             </p>
         </div>
 
         <div id="expenses">
             <div id="history">
                 <p id="historyTitle">History:</p>
-                <div id="historyList">
-                    <div class="listItem">
-                        <div id="indicator" class=""></div>
-                        <p id="category"></p>
-                        <p id="amount"><span id="amountSign"></span></p>
-                    </div>
-                </div>
+                <div id="historyList"></div>
             </div>
 
             <div id="addExpense">
@@ -95,7 +89,7 @@
 
                     <div id="newAmountContainer">
                         <label for="type">Enter the amount:</label>
-                        <input type="number" id="amountInput">
+                        <input min="0.01" step="0.01" type="number" id="amountInput">
                     </div>
 
                     <button type="submit" id="submitButton">Add</button>

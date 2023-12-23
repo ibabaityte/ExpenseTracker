@@ -8,4 +8,17 @@ export class Item {
         this.category = category; 
         this.amount = amount;
     }
+
+    public get getIsIncome() {
+        return this.isIncome;
+    }
+
+    public get getCategory() {
+        return this.category;
+    }
+
+    public get getAmount() {
+        return this.getIsIncome ? this.amount : -this.amount;
+    }
+
 }
