@@ -37,7 +37,6 @@ export class History {
 
     updateBalance(isIncome: boolean, amount: number) {
         this.balance += amount;
-
         if (isIncome) {
             this.income += amount;
         } else {

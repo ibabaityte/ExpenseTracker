@@ -1,17 +1,16 @@
-export interface inputValuesInterface {
+export interface InputValuesInterface {
     isIncome: boolean,
     category: string,
     amount: number
 }
 
-export interface inputsInterface {
+export interface InputsInterface {
     typeInput: HTMLInputElement,
     categoryInput: HTMLInputElement,
     amountInput: HTMLInputElement
 }
 
-export interface placeholdersInterface {
-    listItem: HTMLDivElement,
+export interface PlaceholdersInterface {
     typeIndicatorElement: HTMLDivElement,
     categoryElement: HTMLParagraphElement,
     amountElement: HTMLParagraphElement

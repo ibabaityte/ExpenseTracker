@@ -1,103 +1,76 @@
 import { history } from "../app.js";
 import { Item } from "../models/Item.js";
-import { IndicatorClass } from "../enums/enums.js";
+import { IndicatorEnum } from "../enums/Enums.js";
 import {
-    inputValuesInterface,
-    inputsInterface,
-    placeholdersInterface
-} from "../interfaces/interfaces.js";
+    InputValuesInterface,
+    InputsInterface,
+    PlaceholdersInterface
+} from "../interfaces/Interfaces.js";
 
 export class FormUtils {
-
-    static findInputs = (): inputsInterface => {
+    static findInputs = (): InputsInterface => {
         const typeInput = document.getElementById("income")! as HTMLInputElement;
         const categoryInput = document.getElementById("newCategory")! as HTMLInputElement;
         const amountInput = document.getElementById("amountInput")! as HTMLInputElement;
-
         return { typeInput, categoryInput, amountInput };
     }
 
-    static gatherInputValues = (typeInput: HTMLInputElement, categoryInput: HTMLInputElement, amountInput: HTMLInputElement): inputValuesInterface => {
-        let isIncome = typeInput.checked;
-        let category = categoryInput.value;
-        let amount = +amountInput.value;
-
+    static gatherInputValues = (inputs: InputsInterface): InputValuesInterface => {
+        let isIncome = inputs.typeInput.checked;
+        let category = inputs.categoryInput.value;
+        let amount = +inputs.amountInput.value;
         return { isIncome, category, amount };
     }
 
-    static createPlaceholders = (): placeholdersInterface => {
-        const listItem = document.createElement('div');
-        const typeIndicatorElement = document.createElement('div');
-        const categoryElement = document.createElement('p');
-        const amountElement = document.createElement('p');
-
-        return { listItem, typeIndicatorElement, categoryElement, amountElement };
+    static createPlaceholders = (): PlaceholdersInterface => {
+        const typeIndicatorElement = document.createElement("div");
+        const categoryElement = document.createElement("p");
+        const amountElement = document.createElement("p");
+        return { typeIndicatorElement, categoryElement, amountElement };
     }
 
-    static fillPlaceholders = (item: Item, placeholders: placeholdersInterface) => {
-        placeholders.listItem.className = 'listItem';
-
-        placeholders.typeIndicatorElement.classList.add(item.getIsIncome ? IndicatorClass.Positive : IndicatorClass.Negative);
+    static fillPlaceholders = (item: Item, placeholders: PlaceholdersInterface) => {
+        placeholders.typeIndicatorElement.classList.add(item.getIsIncome ? IndicatorEnum.Positive : IndicatorEnum.Negative);
         placeholders.typeIndicatorElement.classList.add("indicator");
 
-        placeholders.categoryElement.className = 'category';
+        placeholders.categoryElement.className = "category";
         placeholders.categoryElement.textContent = item.getCategory;
 
-        placeholders.amountElement.className = 'amount';
+        placeholders.amountElement.className = "amount";
         placeholders.amountElement.textContent = item.getAmount.toString();
     }
 
-    static appendToListItem = (liChildren: placeholdersInterface) => {
-        liChildren.listItem.append(liChildren.typeIndicatorElement);
-        liChildren.listItem.appendChild(liChildren.categoryElement);
-        liChildren.listItem.appendChild(liChildren.amountElement);
-    }
-
     static renderItemList = () => {
-        let items: Item[] = history.getItemList;
         let listElement = document.querySelector("#historyList")! as HTMLDivElement;
-
         listElement.innerHTML = "";
 
-        for (let i in items) {
+        for (let item of history.getItemList) {
+            const listItem = document.createElement("div");
+            listItem.classList.add("listItem");
 
-            const placeholders = this.createPlaceholders();
+            const placeholders: PlaceholdersInterface = this.createPlaceholders();
+            this.fillPlaceholders(item, placeholders);
 
-            this.fillPlaceholders(items[i], placeholders);
-            this.appendToListItem(placeholders);
-
-            listElement.appendChild(placeholders.listItem);
+            listItem.append(...Object.values(placeholders));
+            listElement.appendChild(listItem);
         }
     }
 
     static updateBalance = () => {
-        let balance = 0;
-        let income = 0;
-        let expenses = 0;
-
-        for(var item of history.getItemList) {
-            balance += item.getAmount;
-            if (item.getIsIncome) {
-                income += item.getAmount;
-            } else {
-                expenses += item.getAmount;
-            }
-        }
-
-        document.querySelector("#balanceAmount")!.innerHTML = balance.toString();
-        document.querySelector("#incomeCount")!.innerHTML = income.toString();
-        document.querySelector("#expensesCount")!.innerHTML = (-expenses).toString();
+        document.querySelector("#balanceAmount")!.innerHTML = history.getBalance.toString();
+        document.querySelector("#incomeCount")!.innerHTML = history.getIncome.toString();
+        document.querySelector("#expensesCount")!.innerHTML = (-history.getExpenses).toString();
     }
 
     static onSubmit = (event: Event) => {
         event.preventDefault();
 
-        const { typeInput, categoryInput, amountInput } = this.findInputs();
-        const { isIncome, category, amount } = this.gatherInputValues(typeInput, categoryInput, amountInput);
+        const inputs: InputsInterface = this.findInputs();
+        const inputValues = this.gatherInputValues(inputs);
 
-        let newItem = new Item(isIncome, category, amount);
+        let newItem = new Item(inputValues.isIncome, inputValues.category, inputValues.amount);
         history.updateItemList(newItem);
-        history.updateBalance(isIncome, amount);
+        history.updateBalance(newItem.getIsIncome, newItem.getAmount);
 
         this.renderItemList();
         this.updateBalance();
