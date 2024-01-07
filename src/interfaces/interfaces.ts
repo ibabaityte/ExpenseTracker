@@ -6,7 +6,7 @@ export interface InputValuesInterface {
 
 export interface InputsInterface {
     typeInput: HTMLInputElement,
-    categoryInput: HTMLInputElement,
+    categoryInput: HTMLSelectElement,
     amountInput: HTMLInputElement
 }
 

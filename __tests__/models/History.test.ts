@@ -35,7 +35,6 @@ describe("History tests", () => {
     test("getInstance() test - return the same instance", () => {
         const history1 = History.getInstance();
         const history2 = History.getInstance();
-
         expect(history1).toBe(history2);
     });
 
@@ -73,25 +72,21 @@ describe("History tests", () => {
         expect(itemList).toContain(item1);
         expect(itemList).toContain(item2);
         expect(itemList).toContain(item3);
-
         expect(itemList).toHaveLength(itemListLength);
     });
 
     test("getBalance() test", () => {
         balance = history.getBalance;
-
         expect(balance).toEqual(expectedBalance);
     });
 
     test("getIncome() test", () => {
         income = history.getIncome;
-
         expect(income).toEqual(expectedIncome);
     });
 
     test("getExpenses() test", () => {
         expenses = history.getExpenses;
-
         expect(expenses).toEqual(expectedExpenses);
     });
 });

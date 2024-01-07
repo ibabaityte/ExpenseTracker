@@ -1,0 +1,39 @@
+<body>
+    <div id="balance">
+        <p id="balanceText">Balance: <b><span id="balanceAmount">0</span></b></p>
+        <p id="incomeText">Total income: <b><span id="incomeCount">0</span></b></p>
+        <p id="expensesText">Total expenses: <b><span id="expensesCount">0</span></b>
+        </p>
+    </div>
+
+    <div id="history">
+        <p id="historyTitle">History:</p>
+        <div id="historyList"></div>
+    </div>
+
+    <form>
+        <div id="newItemType">
+            <div>
+                <input type="radio" id="expense" name="item">
+            </div>
+            <div>
+                <input type="radio" id="income" name="item" checked>
+            </div>
+        </div>
+
+        <div id="newCategoryContainer">
+            <select name="type" id="newCategory" value="Income">
+                <optgroup label="Income">
+                    <option value="Income">Income</option>
+                </optgroup>
+                <optgroup label="Expenses">
+                    <option value="Groceries">Groceries</option>
+                </optgroup>
+            </select>
+        </div>
+
+        <div id="newAmountContainer">
+            <input min="0.01" step="0.01" type="number" id="amountInput" value=2>
+        </div>
+    </form>
+</body>

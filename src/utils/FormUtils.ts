@@ -10,7 +10,7 @@ import {
 export class FormUtils {
     static findInputs = (): InputsInterface => {
         const typeInput = document.getElementById("income")! as HTMLInputElement;
-        const categoryInput = document.getElementById("newCategory")! as HTMLInputElement;
+        const categoryInput = document.getElementById("newCategory")! as HTMLSelectElement;
         const amountInput = document.getElementById("amountInput")! as HTMLInputElement;
         return { typeInput, categoryInput, amountInput };
     }
